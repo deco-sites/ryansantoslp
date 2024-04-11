@@ -9,11 +9,16 @@ export interface CTA {
 }
 
 export interface Props {
+  /** @format rich-text */
   title?: string;
   /** @format textarea */
   description?: string;
+  descriptionHF?: string;
+  descriptionHS?: string;
   tagline?: string;
-  image?: ImageWidget;
+  background?: ImageWidget;
+  imageHF?: ImageWidget;
+  imageHS?: ImageWidget;
   placement?: "left" | "right";
   cta?: CTA[];
   disableSpacing?: {
@@ -32,10 +37,14 @@ const DEFAULT_IMAGE =
 
 export default function ImageWithParagraph({
   title = "Here's an intermediate size heading you can edit",
+  descriptionHF = "Here's an intermediate size heading you can edit",
+  descriptionHS = "Here's an intermediate size heading you can edit",
   description =
     "This text is fully editable and ready for your personal touch. Just click here, head over to the section window, or dive straight into the code to make changes as you see fit. Whether it's about the content, formatting, font, or anything in between, editing is just a click away.",
   tagline = "Tagline",
-  image = DEFAULT_IMAGE,
+  imageHF = DEFAULT_IMAGE,
+  imageHS = DEFAULT_IMAGE,
+  background = DEFAULT_IMAGE,
   placement = "left",
   disableSpacing,
   cta = [
@@ -46,30 +55,55 @@ export default function ImageWithParagraph({
   return (
     <div class="lg:container md:max-w-6xl lg:mx-auto mx-4 text-sm">
       <div
-        class={`flex ${
+        class={`flex gap-12 md:gap-20 text-left items-center z-10 ${
           PLACEMENT[placement]
-        } gap-12 md:gap-20 text-left items-center z-10 ${
-          disableSpacing?.top ? "" : "pt-12 lg:pt-28"
-        } ${disableSpacing?.bottom ? "" : "pb-12 lg:pb-28"}`}
+        } gap-12 md:gap-20 text-left items-center z-10`}
       >
-        <div class="w-full md:w-1/2 border border-secondary rounded-lg overflow-hidden">
+        <div class="w-full md:w-2/3 grid  grid-cols-3 grid-rows-3 border border-secondary rounded-lg overflow-hidden"
+        style={background ? {
+            backgroundImage: `url(${background})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'contain'
+            
+          } : ''}
+        >
           <Image
-            width={640}
-            class="object-fit z-10"
+            width={200}
+            class="object-fit z-20 w-full row-start-2 col-start-1 transition hover:row-start-1 ease-in-out"
             sizes="(max-width: 640px) 100vw, 30vw"
-            src={image}
-            alt={image}
+            src={imageHF}
+            alt={imageHF}
             decoding="async"
             loading="lazy"
           />
+          <div class="p-3 duration-200 object-fit w-full z-10 row-start-2 col-start-1 bg-[#ffd322]">
+            <p class="leading-normal">
+            {descriptionHF}
+            </p>
+          </div>
+          <Image
+            width={200}
+            class="object-fit z-20 w-full row-start-3 col-start-2  transition hover:col-start-3 ease-in-out"
+            sizes="(max-width: 640px) 100vw, 30vw"
+            src={imageHS}
+            alt={imageHS}
+            decoding="async"
+            loading="lazy"
+          />
+          <div class="p-3 duration-200 object-fit z-10 row-start-3 col-start-2 bg-[#fe851a]">
+            <p class="leading-normal">
+              {descriptionHS}
+            </p>
+          </div>
         </div>
-        <div class="w-full md:w-1/2 space-y-2 md:space-y-4 md:max-w-xl gap-4 z-10">
+        <div class="flex justify-start flex-col items-start w-full md:w-1/3 space-y-2 md:space-y-4 md:max-w-xl gap-4 z-10">
           <p class="text-sm font-semibold">
-            {tagline}
+            {tagline} 
           </p>
-          <p class="text-4xl leading-snug">
-            {title}
-          </p>
+          <div class="text-4xl leading-snug" dangerouslySetInnerHTML={{
+            __html: title,
+          }}>
+          </div>
           <p class="leading-normal">
             {description}
           </p>

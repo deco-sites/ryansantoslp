@@ -1,4 +1,31 @@
 {
+  "About": {
+    "__resolveType": "site/sections/ImageWithParagraph.tsx",
+    "placement": "left",
+    "cta": [],
+    "disableSpacing": {
+      "top": false,
+      "bottom": false
+    },
+    "title": "<p>Welcome </p><h2>to <strong>Rio de Janeiro</strong></h2>",
+    "background": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/6167/cf7c8dd1-ced9-4673-92b6-593639b2a34b",
+    "imageHS": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/6167/a1d5c3f0-e6e0-4875-9e8c-2c4093b4a8f1",
+    "imageHF": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/6167/1d605544-d623-47bc-8bcc-3ae4643c7160"
+  },
+  "Banner": {
+    "__resolveType": "site/sections/Hero.tsx",
+    "cta": [
+      {
+        "text": "Explore",
+        "outline": true,
+        "href": "#about"
+      }
+    ],
+    "title": "<p>Rio de Janeiro</p>",
+    "background": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/6167/ba79d4ce-ebd6-48cd-8611-ab0db4fd50b6",
+    "placement": "left",
+    "description": "This text is fully editable and ready for your personal touch. Just click here, head over to the section window, or dive straight into the code to make changes as you see fit. Whether it's about the content, formatting, font, or anything in between, editing is just a click away."
+  },
   "Desktop": {
     "__resolveType": "website/matchers/device.ts",
     "desktop": true
@@ -66,8 +93,8 @@
     },
     "mainColors": {
       "base-100": "#ffffff",
-      "primary": "#171717",
-      "secondary": "#c7c7c7",
+      "primary": "#1d1b1b",
+      "secondary": "#ffffff",
       "tertiary": "#404040",
       "neutral": "#333333",
       "success": "#008060",
@@ -96,10 +123,22 @@
   },
   "Preview /sections/Hero.tsx": {
     "__resolveType": "site/sections/Hero.tsx",
-    "title": "<p>Click here to tweak this text however you want.</p>",
+    "title": "<h1><strong>RIO DE JANEIRO</strong></h1>",
     "placement": "left",
-    "cta": [],
-    "description": "This text is fully editable and ready for your personal touch. Just click here, head over to the section window, or dive straight into the code to make changes as you see fit. Whether it's about the content, formatting, font, or anything in between, editing is just a click away."
+    "cta": [
+      {
+        "text": "Explore",
+        "href": "#about",
+        "outline": true
+      }
+    ],
+    "background": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/6167/198751d4-426b-4bac-adac-6b061909cfe6"
+  },
+  "Preview /sections/ImageWithParagraph.tsx": {
+    "__resolveType": "site\\sections\\ImageWithParagraph.tsx"
+  },
+  "Preview /sections/Logos.tsx": {
+    "__resolveType": "site\\sections\\Logos.tsx"
   },
   "Preview /sections/hero-1.tsx": {
     "__resolveType": "site/sections/hero-1.tsx"
@@ -110,6 +149,24 @@
   "Preview Sections MyHero": {
     "name": "works!",
     "__resolveType": "site/sections/myHero.tsx"
+  },
+  "Preview site/sections/ImageWithParagraph.tsx": {
+    "__resolveType": "site/sections/ImageWithParagraph.tsx",
+    "placement": "left",
+    "cta": [],
+    "title": "Welcome to Rio de Janeiro"
+  },
+  "Preview site/sections/Logos.tsx": {
+    "__resolveType": "site/sections/Logos.tsx"
+  },
+  "Preview website/loaders/fonts/googleFonts.ts": {
+    "__resolveType": "website/loaders/fonts/googleFonts.ts",
+    "fonts": [
+      {
+        "variations": [],
+        "family": "Rubik"
+      }
+    ]
   },
   "Serene Coastline": {
     "__resolveType": "site/sections/Theme/Theme.tsx",
@@ -270,23 +327,19 @@
         "favicon": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/4763/43999173-3786-4a4b-be09-5d7313d0bc3b"
       },
       {
-        "__resolveType": "site/sections/Hero.tsx",
-        "cta": [],
-        "title": "<p>Click here to tweak this text however you want.</p>",
-        "description": "This text is fully editable and ready for your personal touch. Just click here, head over to the section window, or dive straight into the code to make changes as you see fit. Whether it's about the content, formatting, font, or anything in between, editing is just a click away."
+        "__resolveType": "Banner"
+      },
+      {
+        "__resolveType": "About"
       },
       {
         "__resolveType": "site/sections/Logos.tsx"
       },
       {
-        "__resolveType": "site/sections/ImageWithParagraph.tsx",
-        "placement": "right"
-      },
-      {
         "__resolveType": "site/sections/ImageWithParagraph.tsx"
       },
       {
-        "__resolveType": "site/sections/BlogPosts.tsx"
+        "__resolveType": "Blog"
       },
       {
         "__resolveType": "site/sections/Testimonials.tsx"
@@ -295,7 +348,12 @@
         "__resolveType": "site/sections/Faq.tsx"
       },
       {
-        "__resolveType": "site/sections/Footer.tsx"
+        "__resolveType": "site/sections/Footer.tsx",
+        "subscribe": {
+          "title": "Titulo",
+          "description": "Desc",
+          "instructions": "<p>Teste</p>"
+        }
       }
     ],
     "__resolveType": "website/pages/Page.tsx"
@@ -333,5 +391,21 @@
     "theme": {
       "__resolveType": "Neutral"
     }
+  },
+  "Blog": {
+    "__resolveType": "site/sections/BlogPosts.tsx",
+    "posts": [
+      {
+        "tags": [
+          "tag1"
+        ],
+        "title": "Titulo",
+        "author": "Ryan",
+        "excerpt": "Gigh",
+        "date": "23/20",
+        "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/6167/b912296e-2358-4524-938e-6d63209bdc7f",
+        "readingTime": "10h"
+      }
+    ]
   }
 }

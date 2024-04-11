@@ -14,6 +14,7 @@ export interface Props {
    * @default Click here to tweak this text however you want.
    */
   title?: string;
+  background?: ImageWidget;
   /**
    * @default This text is fully editable and ready for your personal touch. Just click here, head over to the section window, or dive straight into the code to make changes as you see fit. Whether it's about the content, formatting, font, or anything in between, editing is just a click away.
    */
@@ -29,9 +30,9 @@ const PLACEMENT = {
 };
 
 export default function HeroFlats({
-  title = "Click here to tweak this text however you want.",
-  description =
-    "This text is fully editable and ready for your personal touch. Just click here, head over to the section window, or dive straight into the code to make changes as you see fit. Whether it's about the content, formatting, font, or anything in between, editing is just a click away.",
+  title = "",
+  background,
+  description = '',
   image,
   placement = "left",
   cta = [
@@ -39,8 +40,14 @@ export default function HeroFlats({
     { id: "change-me-2", href: "/", text: "Change me", outline: true },
   ],
 }: Props) {
+  const animationBg = 'wiggle_1s_ease-in-out_infinite'
   return (
-    <nav class="lg:container lg:mx-auto mx-4">
+    <nav style={background ? {
+      backgroundImage: `url(${background})`,
+      backgroundPosition: 'center',
+      backgroundSize: 'cover'
+      
+    } : ''} class={`w-full mx-0 ${animationBg}`}>
       <div class="flex flex-col items-center gap-8">
         <div
           class={`flex w-full xl:container xl:mx-auto py-20 mx-5 md:mx-10 z-10 ${
@@ -61,14 +68,19 @@ export default function HeroFlats({
             />
           )}
           <div
-            class={`mx-6 lg:mx-auto lg:w-full space-y-4 gap-4 ${
+            class={`mx-6 mx-auto lg:w-full space-y-4 gap-4 ${
               image
-                ? "lg:w-1/2 lg:max-w-xl"
-                : "flex flex-col items-center justify-center lg:max-w-3xl"
+                ? "lg:w-1/2"
+                : "flex flex-col items-center justify-center"
             }`}
           >
             <div
-              class="inline-block lg:text-[80px] text-4xl leading-none font-medium"
+            style={{
+              backgroundImage: 'linear-gradient(0deg, rgba(0,0,0,0) 5%, rgba(255,255,255,1) 45%)',
+              backgroundClip: 'text',
+              color: 'transparent'
+            }}
+              class="font-sans font-black w-full inline-block  lg:text-[100px] text-9xl text-nowrap leading-none"
               dangerouslySetInnerHTML={{
                 __html: title,
               }}
@@ -84,13 +96,15 @@ export default function HeroFlats({
                   id={item?.id}
                   href={item?.href}
                   target={item?.href.includes("http") ? "_blank" : "_self"}
-                  class={`font-normal btn btn-primary ${
+                  class={` text-white font-normal btn btn-secondary ${
                     item.outline && "btn-outline"
                   }`}
                 >
                   {item?.text}
                 </a>
               ))}
+              <svg class="animate-bounce w-6 h-6 ..."> 
+              </svg>
             </div>
           </div>
         </div>
